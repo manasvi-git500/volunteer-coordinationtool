@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Assignments | ServeUp</title>
+  <link rel="stylesheet" href="css/sections.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="ServeUp Logo" />
+      ServeUp
+    </div>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="volunteer.html">Dashboard</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="attendance.html">Attendance</a></li>
+        <li><a href="assignments.html" class="active">Assignments</a></li>
+        <li><a href="announcements.html">Announcements</a></li>
+      </ul>
+      <button class="logout-btn" onclick="location.href='index.html'">Logout</button>
+    </div>
+  </nav>
+
+  <section class="content-section">
+    <h2>My Assignments</h2>
+
+    <div class="assignment-list">
+      <div class="assignment-card">
+        <h3>Health Camp Coordination</h3>
+        <p><strong>Due:</strong> April 18, 2025</p>
+        <p><strong>Task:</strong> Coordinate volunteers for registration and check-ups.</p>
+      </div>
+
+      <div class="assignment-card">
+        <h3>Blood Drive Reporting</h3>
+        <p><strong>Due:</strong> April 22, 2025</p>
+        <p><strong>Task:</strong> Prepare attendance and donor data report.</p>
+        <form class="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+          <label for="file-upload">Upload Report:</label>
+          <input type="file" name="assignmentFile" id="file-upload" required>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,223 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    background-color: #0b1d3a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    flex-wrap: wrap;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo img {
+    height: 40px;
+    width: 40px;
+  }
+  
+  .logo span {
+    font-size: 1.8rem;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .nav-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 20px;
+  }
+  
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+  
+  .nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s ease;
+  }
+  
+  .nav-links li a:hover,
+  .nav-links li a.active {
+    color: #ffcc00;
+  }
+  
+  .auth-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .login-btn, .signup-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    border: 2px solid transparent;
+    text-decoration: none;
+    transition: 0.3s ease;
+  }
+  
+  .login-btn {
+    border: 2px solid white;
+    color: white;
+    background: transparent;
+  }
+  
+  .signup-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+  }
+  
+  /* Contact section styles */
+  .contact-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    flex: 1;
+  }
+  
+  .contact-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+    background: #fff;
+    border-radius: 12px;
+    padding: 60px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  }
+  
+  .contact-info, .contact-form {
+    flex: 1;
+    min-width: 350px;
+  }
+  
+  .contact-info h2,
+  .contact-form h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #0b1d3a;
+  }
+  
+  .contact-info ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .contact-info li {
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+  }
+  
+  .contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: none;
+  }
+  
+  .contact-form textarea {
+    height: 180px;
+  }
+  
+  .contact-form button {
+    width: fit-content;
+    align-self: flex-start;
+    padding: 14px 28px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #0b1d3a;
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 1rem;
+    margin-top: auto;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+  
+    .nav-container {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .auth-buttons {
+      margin-top: 10px;
+    }
+  
+    .contact-content {
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+    }
+  
+    .contact-form button {
+      width: 100%;
+      align-self: center;
+    }
+  }
+  

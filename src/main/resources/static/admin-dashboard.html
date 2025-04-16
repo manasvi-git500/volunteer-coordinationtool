@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ServeUp Admin Dashboard</title>
+  <link rel="stylesheet" href="css/admin-dashboard.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo-title">
+      <img src="images/logo.png" alt="ServeUp Logo" class="logo" />
+      <span>ServeUp Admin</span>
+    </div>
+    <div class="nav-links">
+      <a href="admin-dashboard.html">Dashboard</a>
+      <a href="admin-volunteers.html">Volunteers</a>
+      <a href="admin-events.html">Events</a>
+      <a href="admin-reports.html">Reports</a>
+      <button onclick="window.location.href='index.html'" class="logout-btn">Logout</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Welcome, Admin</h1>
+      <p>Efficiently manage your volunteer initiatives</p>
+    </div>
+  </section>
+
+  <main class="dashboard">
+    <div class="dashboard-left">
+      <div class="card">
+        <h3>Live Analytics</h3>
+        <div style="width: 220px; height: 220px; margin: auto;">
+          <canvas id="liveAnalyticsChart"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Volunteer Engagement</h3>
+        <div style="width: 220px; height: 220px; margin: auto;">
+          <canvas id="volunteerEngagementChart"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Top Volunteers</h3>
+        <img src="top-volunteers.jpg" alt="Top Volunteers" style="width: 100%; border-radius: 8px;" />
+      </div>
+      <div class="card">
+        <h3>Pending Actions</h3>
+        <img src="pending-actions.jpg" alt="Pending Actions" style="width: 100%; border-radius: 8px;" />
+      </div>
+    </div>
+
+    <div class="admin-profile">
+      <div class="profile-card">
+        <img src="admin-avatar.png" alt="Admin Profile" class="profile-pic" />
+        <div class="admin-name">Admin</div>
+        <div class="admin-email">admin@serveup.org</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 ServeUp. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const ctx1 = document.getElementById('liveAnalyticsChart').getContext('2d');
+    new Chart(ctx1, {
+      type: 'pie',
+      data: {
+        labels: ['Attended', 'Missed'],
+        datasets: [{
+          data: [80, 20],
+          backgroundColor: ['#1e90ff', '#efba0c']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    const ctx2 = document.getElementById('volunteerEngagementChart').getContext('2d');
+    new Chart(ctx2, {
+      type: 'pie',
+      data: {
+        labels: ['Active', 'Inactive'],
+        datasets: [{
+          data: [70, 30],
+          backgroundColor: ['#1e90ff', '#efba0c']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Volunteer Dashboard</title>
+  <link rel="stylesheet" href="css/volunteer-dashboard.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="images/logo.png" alt="ServeUp Logo" class="logo" />
+      <span class="brand-name">ServeUp Volunteer</span>
+    </div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="attendance.html">Attendance</a>
+      <a href="assignments.html">Assignments</a>
+      <a href="announcements.html">Announcements</a>
+      <a href="contact.html">Contact</a>
+      <button class="logout-btn" onclick="window.location.href='index.html'">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Welcome -->
+  <section class="welcome-section">
+    <div class="welcome-content">
+      <h1>Welcome, Volunteers!</h1>
+      <p>"Together we make a difference"</p>
+    </div>
+  </section>
+  
+  <!-- Main Content -->
+  <div class="main-content-wrapper">
+    <div class="dashboard-main">
+      <div class="card-group">
+        <div class="card">Event Registered</div>
+        <div class="card">Attendance</div>
+        <div class="card">Assignments Submitted</div>
+        <div class="card">New Announcements</div>
+      </div>
+
+      <div class="card chart-pair">
+        <div class="chart-container">
+          <canvas id="pieChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="lineGraph"></canvas>
+        </div>
+      </div>
+      
+
+      <div class="upcoming-events">
+        <h3>Upcoming Events</h3>
+        <p>- Clean-up Drive on Saturday<br>- Workshop on Sunday</p>
+      </div>
+
+      <div class="feedback-form">
+        <h3>Feedback Form</h3>
+        <textarea placeholder="Enter your feedback..."></textarea><br />
+        <button type="submit">Submit</button>
+      </div>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="profile-section">
+      <img id="profilePic" src="https://via.placeholder.com/150" alt="Profile" />
+      <p class="volunteer-name">John Doe</p>
+      <input type="file" id="upload" accept="image/*" /><br />
+      <div class="skills"><strong>Skills:</strong> Teamwork, Organization</div>
+    </div>
+  </div>
+
+  <footer>&copy; 2025 Volunteer Org</footer>
+  <script src="js/volunteer.js"></script>
+</body>
+</html>
