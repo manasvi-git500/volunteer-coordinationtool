@@ -18,22 +18,36 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
-            .cors(cors -> cors.disable())
+            .cors(cors -> {}) // Enables CORS
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
-                    "/api/auth/**",
-                    "/verify-email/**",
-                    "/signup.html",
-                    "/login.html",
-                    "/verify.html",
-                    "/js/**",
-                    "/css/**",
-                    "/images/**",
-                    "/",
-                    "/index.html"
+                    "/",                            // Root
+                    "/index.html",                  // Main page
+                    "/login.html",                  // Login page
+                    "/signup.html",                 // Signup page
+                    "/register.html",               // Registration page
+                    "/api/auth/**",                 // Auth APIs
+                    "/css/**",                      // CSS files
+                    "/js/**",                       // JS files
+                    "/images/**",                   // Image resources
+                    "/favicon.ico",
+                    "/volunteer.html",
+                    "/admin-dashboard.html",
+                    "/events.html",
+                    "/attendance.html",
+                    "/assignments.html",
+                    "/announcements.html",
+                    "/health-events.html",
+                    "/education-events.html",
+                    "/environment-events.html",
+                    "/registration.html",
+                    "/about.html",
+                    "/contact.html"
+                    
+                    // Favicon
                 ).permitAll()
                 .anyRequest().authenticated()
             );

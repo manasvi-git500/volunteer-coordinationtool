@@ -1,87 +1,68 @@
 package com.example.volunteer.controller;
 
 import com.example.volunteer.model.User;
-import com.example.volunteer.model.VerificationToken;
-import com.example.volunteer.service.UserService;
-import com.example.volunteer.service.VerificationTokenService;
-import com.example.volunteer.util.EmailSender;
+import com.example.volunteer.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
+@CrossOrigin(origins = "http://localhost:5500") // Update if frontend port differs
 public class AuthController {
 
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
 
-    @Autowired
-    private VerificationTokenService tokenService;
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    @Autowired
-    private EmailSender emailSender;
-
+    // Signup logic
     @PostMapping("/signup")
-    public String signup(@RequestBody User user) {
-        if (userService.emailExists(user.getEmail())) {
-            return "Email already registered";
+    public Map<String, Object> signup(@RequestBody User user) {
+        Map<String, Object> response = new HashMap<>();
+
+        if (userRepository.existsByEmail(user.getEmail())) {
+            response.put("message", "Email already registered.");
+            response.put("success", false);
+            return response;
         }
 
-        user.setEmailVerified(false);
-        userService.saveUser(user);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
 
-        String token = UUID.randomUUID().toString();
-        VerificationToken verificationToken = new VerificationToken(token, user);
-        tokenService.saveToken(verificationToken);
-
-        String link = "http://localhost:8080/auth/verify?token=" + token;
-        emailSender.sendEmail(user.getEmail(), "Email Verification", "Click the link to verify: " + link);
-
-        return "Registration successful. Please verify your email.";
+        response.put("message", "Signup successful");
+        response.put("success", true);
+        return response;
     }
 
-    @GetMapping("/verify")
-    public String verifyUser(@RequestParam String token) {
-        Optional<VerificationToken> optionalToken = tokenService.findByToken(token);
-
-        if (optionalToken.isPresent()) {
-            User user = optionalToken.get().getUser();
-            user.setEmailVerified(true);
-            userService.saveUser(user);
-            return "Email verified. You can now log in.";
-        }
-        return "Invalid verification token.";
-    }
-
+    // Login logic
     @PostMapping("/login")
-    public String login(@RequestBody Map<String, String> payload) {
-        String email = payload.get("email");
-        String password = payload.get("password");
+    public Map<String, Object> login(@RequestBody Map<String, String> loginData) {
+        String email = loginData.get("email");
+        String password = loginData.get("password");
 
-        Optional<User> userOptional = userService.findByEmail(email);
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
+        Map<String, Object> response = new HashMap<>();
+        User user = userRepository.findByEmail(email);
 
-            if (!user.isEmailVerified()) {
-                // Resend verification email
-                String token = UUID.randomUUID().toString();
-                VerificationToken verificationToken = new VerificationToken(token, user);
-                tokenService.saveToken(verificationToken);
-
-                String link = "http://localhost:8080/auth/verify?token=" + token;
-                emailSender.sendEmail(user.getEmail(), "Email Verification", "Click to verify: " + link);
-
-                return "Please verify your email first. A new verification link has been sent.";
-            }
-
-            if (user.getPassword().equals(password)) {
-                return user.getRole().equals("admin") ? "redirect:/admin.html" : "redirect:/volunteer.html";
-            } else {
-                return "Invalid password";
-            }
+        if (user == null || !passwordEncoder.matches(password, user.getPassword())) {
+            response.put("success", false);
+            response.put("message", "Invalid email or password.");
+            return response;
         }
-        return "User not found";
+
+        response.put("success", true);
+        response.put("role", user.getRole()); // Can be "admin" or "volunteer"
+        return response;
+    }
+
+    // Email availability check
+    @GetMapping("/check-email")
+    public Map<String, Boolean> checkEmail(@RequestParam String email) {
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("exists", userRepository.existsByEmail(email));
+        return response;
     }
 }

@@ -1,37 +1,21 @@
 package com.example.volunteer.model;
 
 import jakarta.persistence.*;
-import java.util.Set;
-import jakarta.persistence.Table;
-
 
 @Entity
 @Table(name = "users")
 public class User {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     private String name;
-
-    @Column(unique = true, nullable = false)
     private String email;
-
     private String password;
-
     private String role;
 
-    private boolean emailVerified;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<VerificationToken> tokens;
-
-    public User() {}
-
     // Getters and Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -44,10 +28,4 @@ public class User {
 
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }
-
-    public boolean isEmailVerified() { return emailVerified; }
-    public void setEmailVerified(boolean emailVerified) { this.emailVerified = emailVerified; }
-
-    public Set<VerificationToken> getTokens() { return tokens; }
-    public void setTokens(Set<VerificationToken> tokens) { this.tokens = tokens; }
 }
