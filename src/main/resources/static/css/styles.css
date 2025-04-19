@@ -78,3 +78,10 @@ body {
   border-radius: 8px;
   max-width: 300px;
 }
+
+footer {
+  background-color: #001f3f;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}

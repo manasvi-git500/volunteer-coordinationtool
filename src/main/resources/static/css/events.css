@@ -14,12 +14,12 @@ body {
 /* Navbar */
 /* Navbar Styles */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #0a1d37; /* Deep navy blue */
-  padding: 0.75rem 2rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #0d1b2a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    color: white;
 }
 
 .logo-container {
@@ -35,7 +35,7 @@ body {
 
 .logo-text {
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: bold;
   color: #ffffff;
 }
 
@@ -53,21 +53,23 @@ body {
   transition: color 0.3s ease;
 }
 
-.nav-right a:hover {
-  color: #64b5f6; /* Light blue on hover */
-}
+ 
+.nav-right a:hover,
+  .nav-right a.active {
+    color: #ffcc00;
+  }
 
-.logout-btn {
-  background-color: #e63946; /* Red */
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  .logout-btn {
+    margin-left: 10px;
+    background-color: #e53935; /* Red */
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+  }
 
 .logout-btn:hover {
   background-color: #c62828;
@@ -167,12 +169,19 @@ body {
 
 
 .footer {
-  background-color: #0a1d37;
-  color: #f5f5f5;
+  background-color: #0d1b2a;
+  color: #fff;
   text-align: center;
-  padding: 1.5rem 1rem;
-  margin-top: 4rem;
+  padding: 30px 0;
+  font-size: 0.95rem;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: 50px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
 }
+
+
 
 .footer a {
   color: #f5f5f5;

@@ -3,51 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Attendance | ServeUp</title>
-  <link rel="stylesheet" href="css/sections.css" />
+  <title>Volunteer Attendance</title>
+  <link rel="stylesheet" href="css/attendance.css" />
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo">
-      <img src="images/logo.png" alt="ServeUp Logo" />
-      ServeUp
+  <header class="navbar">
+    <div class="navbar-left">
+      <img src="images/logo.png" alt="ServeUp Logo" class="logo-img" />
+      <span class="web-name">ServeUp</span>
     </div>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="volunteer.html">Dashboard</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="attendance.html" class="active">Attendance</a></li>
-        <li><a href="assignments.html">Assignments</a></li>
-        <li><a href="announcements.html">Announcements</a></li>
-   
-      </ul>
-      <button class="logout-btn" onclick="location.href='index.html'">Logout</button>
-    </div>
-  </nav>
+    <nav class="navbar-right">
+      <a href="volunteer.html">Dashboard</a>
+      <a href="events.html">Events</a>
+      <a href="attendance.html" class="active">Attendance</a>
+      <a href="assignments.html">Assignments</a>
+      <a href="announcements.html">Announcements</a>
+      <a href="index.html" class="logout-btn">Logout</a>
+    </nav>
+  </header>
 
-  <section class="content-section">
-    <h2>Attendance Records</h2>
-    <table class="attendance-table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Event</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>April 10, 2025</td>
-          <td>Health Camp</td>
-          <td>Present</td>
-        </tr>
-        <tr>
-          <td>April 12, 2025</td>
-          <td>Blood Drive</td>
-          <td>Absent</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+  <main class="content">
+    <section class="page-section">
+      <h1>Attendance</h1>
+      <div class="table-container">
+        <table class="attendance-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Volunteer Name</th>
+              <th>Email</th>
+              <th>Event Name</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Venue</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Jane Doe</td>
+              <td>jane.doe@example.com</td>
+              <td>Tree Plantation Drive</td>
+              <td>April 15, 2025</td>
+              <td>10:00 AM</td>
+              <td>City Park</td>
+              <td class="attended">Attended</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>John Smith</td>
+              <td>john.smith@example.com</td>
+              <td>Health Awareness Camp</td>
+              <td>April 12, 2025</td>
+              <td>09:00 AM</td>
+              <td>Community Center</td>
+              <td class="missed">Missed</td>
+            </tr>
+            <!-- Add more rows here -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 ServeUp. All rights reserved.</p>
+  </footer>
+  
 </body>
 </html>

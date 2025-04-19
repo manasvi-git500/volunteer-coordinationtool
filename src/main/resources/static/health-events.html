@@ -10,16 +10,17 @@
 
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="logo">ServeUp</div>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="volunteer.html">Dashboard</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="health-events.html" class="active">Health</a></li>
-        <li><a href="education-events.html">Education</a></li>
-        <li><a href="environment-events.html">Environment</a></li>
-      </ul>
-      <a href="index.html" class="logout-btn">Logout</a>
+    <div class="navbar-left">
+      <img src="images/logo.png" alt="ServeUp Logo" class="logo">
+      <span class="brand-name">ServeUp</span>
+    </div>
+    <div class="navbar-right">
+      <a href="volunteer.html">Dashboard</a>
+      <a href="events.html">Events</a>
+      <a href="health-events.html" class="active">Health</a>
+      <a href="education-events.html">Education</a>
+      <a href="environment-events.html">Environment</a>
+      <button class="logout-btn" onclick="window.location.href='index.html'">Logout</button>
     </div>
   </nav>
   
@@ -67,9 +68,10 @@
 
   
   <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 ServeUp. All Rights Reserved.</p>
+  <footer class="footer">
+    <p>&copy; 2025 ServeUp. All rights reserved.</p>
   </footer>
+  
 
 </body>
 </html>

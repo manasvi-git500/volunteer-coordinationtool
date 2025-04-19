@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Manage Events</title>
+  <link rel="stylesheet" href="css/admin-events.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo">
+      <span>ServeUp</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="admin-dashboard.html">Dashboard</a></li>
+      <li><a href="admin-volunteers.html">Volunteers</a></li>
+      <li><a href="admin-events.html" class="active">Events</a></li>
+      <li><a href="admin-reports.html">Reports</a></li>
+      <li><button class="logout" onclick="window.location.href='index.html'">Logout</button></li>
+    </ul>
+    
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Manage Events</h1>
+      <p>View, Add, and Update Event Details</p>
+    </div>
+  </section>
+
+
+  <div class="main-content">
+
+  <!-- Add Event Button -->
+  <div class="event-controls">
+    <button class="add-event-btn" onclick="openModal()">+ Add Event</button>
+  </div>
+
+  <!-- Event List Table -->
+  <div class="event-list">
+    <table>
+      <thead>
+        <tr>
+          <th>Event Name</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Venue</th>
+          <th>Category</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Event rows go here -->
+        <tr>
+          <td>Community Health Camp</td>
+          <td>2025-04-20</td>
+          <td>10:00 AM</td>
+          <td>City Hall</td>
+          <td>Health</td>
+          <td>
+            <button class="action-btn">Edit</button>
+            <button class="action-btn">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal -->
+  <div id="eventModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Add New Event</h2>
+      <input type="text" placeholder="Event Name">
+      <input type="date">
+      <input type="time">
+      <input type="text" placeholder="Venue">
+      <select>
+        <option value="">Select Category</option>
+        <option value="Health">Health</option>
+        <option value="Education">Education</option>
+        <option value="Environment">Environment</option>
+      </select>
+      <button>Add Event</button>
+    </div>
+  </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 ServeUp. All rights reserved.</p>
+  </footer>
+  
+
+  <!-- Script -->
+  <script>
+    function openModal() {
+      document.getElementById("eventModal").style.display = "block";
+    }
+    function closeModal() {
+      document.getElementById("eventModal").style.display = "none";
+    }
+    window.onclick = function(event) {
+      const modal = document.getElementById("eventModal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>

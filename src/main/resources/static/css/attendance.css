@@ -1,0 +1,138 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html, body {
+    height: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f2f5;
+    color: #1e1e2f;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: #0d1b2a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    color: white;
+  }
+  
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-img {
+    height: 32px;
+    margin-right: 10px;
+  }
+
+  .web-name {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  
+  .navbar-right a {
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #ccc;
+    transition: color 0.3s;
+  }
+
+  .navbar-right a:hover,
+  .navbar-right a.active {
+    color: #ffcc00;
+  }
+  
+  .logout-btn {
+    margin-left: 10px;
+    background-color: #e53935;
+    color: white !important;
+    border: none;
+    padding: 8px 16px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+  }
+  .logout-btn:hover {
+    background-color: #c62828;
+  }
+  
+  /* Main content */
+  .content {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  /* Section title */
+  .page-section h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    border-left: 5px solid #0a1a33;
+    padding-left: 1rem;
+    color: #0a1a33;
+  }
+  
+  /* Table styling */
+  .table-container {
+    overflow-x: auto;
+  }
+  .attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  }
+  .attendance-table thead {
+    background-color: #0a1a33;
+    color: white;
+  }
+  .attendance-table th,
+  .attendance-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  /* Hover effect for body rows only */
+  .attendance-table tbody tr:hover {
+    background-color: #e3f2fd; /* Light blue */
+  }
+  
+  .attended {
+    color: green;
+    font-weight: bold;
+  }
+  .missed {
+    color: red;
+    font-weight: bold;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #0d1b2a;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.95rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 50px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  }
+  

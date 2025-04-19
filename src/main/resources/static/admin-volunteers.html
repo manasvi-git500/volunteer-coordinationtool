@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Volunteers | ServeUp Admin</title>
+  <link rel="stylesheet" href="css/admin-volunteers.css"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo"> 
+      <img src="images/logo.png" alt="ServeUp Logo"/>
+      <span>ServeUp</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="admin-dashboard.html">Dashboard</a></li>
+      <li><a href="admin-volunteers.html" class="active">Volunteers</a></li>
+      <li><a href="admin-events.html">Events</a></li>
+      <li><a href="admin-reports.html">Reports</a></li>
+      <li><button class="logout" onclick="window.location.href='index.html'">Logout</button></li>
+    </ul>
+    
+  </nav>
+
+  <div class="main-content">
+ <div class="volunteers-hero">
+  <header class="header-section">
+    <h1>Volunteers</h1>
+    <p>Manage and monitor all registered volunteers</p>
+  </header>
+  </div>
+
+  <section class="volunteer-list">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Registered Events</th>
+        </tr>
+      </thead>
+      <tbody id="volunteerTableBody">
+        <!-- Dynamically populated via JS -->
+      </tbody>
+    </table>
+  </section>
+  </div>
+
+  <script src="js/admin-volunteers.js"></script>
+
+  <footer class="footer">
+    <p>&copy; 2025 ServeUp. All rights reserved.</p>
+  </footer>
+  
+</body>
+</html>

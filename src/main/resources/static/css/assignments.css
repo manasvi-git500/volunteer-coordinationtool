@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0d1b2a;
+    padding: 1rem 2rem;
+    color: white;
+  }
+  
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-img {
+    height: 32px;
+    margin-right: 10px;
+  }
+  
+  .web-name {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #ffffff;;
+  }
+  
+  .navbar-right a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  
+  .navbar-right a:hover,
+  .navbar-right a.active {
+    color: #ffcc00;
+  }
+  
+  .logout-btn {
+    margin-left: 20px;
+    background-color: #e53935;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+  }
+  
+  .logout-btn:hover {
+    background-color: #c62828;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+  }
+  
+  .page-section h1 {
+    text-align: center;
+    color: #0a192f;
+    margin-bottom: 30px;
+  }
+  
+  .assignment-list {
+    display: grid;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .assignment-card {
+    background-color: #ffffff;
+    border-left: 5px solid #001f3f;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .assignment-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .assignment-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  .assignment-card h3 {
+    color: #001f3f;
+    margin-bottom: 10px;
+  }
+  
+  .footer {
+    background-color: #0d1b2a;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.95rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 50px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
