@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Manage Assignments</title>
+  <link rel="stylesheet" href="css/admin-assignments.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo">
+      <span>ServeUp</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="admin-dashboard.html">Dashboard</a></li>
+      <li><a href="admin-volunteers.html">Volunteers</a></li>
+      <li><a href="admin-events.html">Events</a></li>
+      <li><a href="admin-assignments.html" class="active">Assignments</a></li>
+      <li><a href="admin-announcements.html">Announcements</a></li>
+      <li><a href="admin-reports.html">Reports</a></li>
+      <li><button class="logout" onclick="window.location.href='index.html'">Logout</button></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Manage Assignments</h1>
+      <p>Create and track volunteer assignments</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- Assignment Form -->
+    <div class="assignment-controls">
+      <form id="assignmentForm">
+        <input type="text" id="title" placeholder="Assignment Title" required>
+        <textarea id="description" placeholder="Assignment Description" required></textarea>
+        <input type="date" id="dueDate" required>
+        <button type="submit" class="add-assignment-btn">Add Assignment</button>
+      </form>
+    </div>
+
+    <!-- Assignment List -->
+    <div class="assignment-list" id="assignmentList">
+      <!-- Dynamic content will be inserted here -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 ServeUp. All rights reserved.</p>
+  </footer>
+
+  <script src="js/admin-assignments.js"></script>
+</body>
+</html>

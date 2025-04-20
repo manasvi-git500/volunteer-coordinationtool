@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ServeUp Admin - Announcements</title>
+  <link rel="stylesheet" href="css/admin-announcements.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo">
+      <span>ServeUp</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="admin-dashboard.html">Dashboard</a></li>
+        <li><a href="admin-volunteers.html">Volunteers</a></li>
+        <li><a href="admin-events.html">Events</a></li>
+        <li><a href="admin-assignments.html" >Assignments</a></li>
+        <li><a href="admin-announcements.html" class="active">Announcements</a></li>
+        <li><a href="admin-reports.html">Reports</a></li>
+        <li><button class="logout" onclick="window.location.href='index.html'">Logout</button></li>
+      </ul>
+  </nav>
+
+  <!-- header Section -->
+  
+
+  <header class="header-section">
+    <h1>Manage Announcements</h1>
+    <p>Post important updates and notifications for all volunteers</p>
+  </header>
+
+  <!-- Button to Add Announcement -->
+  <div class="announcement-controls">
+    <button class="add-announcement-btn" onclick="openModal()">+ Add Announcement</button>
+  </div>
+
+  <!-- Announcements Table -->
+  <div class="announcement-list">
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Message</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="announcementBody">
+        <!-- Dynamic content will be inserted here via JS -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal for Adding/Editing Announcements -->
+  <div id="announcementModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle">Add Announcement</h2>
+      <input type="text" id="announcementTitle" placeholder="Title" />
+      <textarea id="announcementMessage" rows="4" placeholder="Message"></textarea>
+      <button onclick="saveAnnouncement()">Save</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; 2025 ServeUp. All Rights Reserved.
+  </footer>
+
+  <!-- JavaScript for Modal Logic -->
+  <script>
+    const modal = document.getElementById("announcementModal");
+    const titleInput = document.getElementById("announcementTitle");
+    const messageInput = document.getElementById("announcementMessage");
+    const modalTitle = document.getElementById("modalTitle");
+
+    function openModal(edit = false, title = '', message = '') {
+      modal.style.display = "block";
+      modalTitle.textContent = edit ? "Edit Announcement" : "Add Announcement";
+      titleInput.value = title;
+      messageInput.value = message;
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+      titleInput.value = "";
+      messageInput.value = "";
+    }
+
+    function saveAnnouncement() {
+      const title = titleInput.value.trim();
+      const message = messageInput.value.trim();
+      if (!title || !message) return alert("Please fill out all fields.");
+
+      const tbody = document.getElementById("announcementBody");
+      const row = document.createElement("tr");
+
+      const date = new Date().toLocaleDateString();
+
+      row.innerHTML = `
+        <td>${title}</td>
+        <td>${message}</td>
+        <td>${date}</td>
+        <td>
+          <button class="action-btn" onclick="editRow(this)">Edit</button>
+          <button class="action-btn" onclick="deleteRow(this)">Delete</button>
+        </td>
+      `;
+      tbody.appendChild(row);
+      closeModal();
+    }
+
+    function editRow(btn) {
+      const row = btn.closest("tr");
+      const title = row.children[0].textContent;
+      const message = row.children[1].textContent;
+      openModal(true, title, message);
+
+      // Remove old row on edit (optional - real logic would update)
+      row.remove();
+    }
+
+    function deleteRow(btn) {
+      if (confirm("Are you sure you want to delete this announcement?")) {
+        const row = btn.closest("tr");
+        row.remove();
+      }
+    }
+
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+  </script>
+
+</body>
+</html>
