@@ -66,10 +66,10 @@ body {
   }
   
   .nav-links li a {
-    text-decoration: none;
-    font-weight: 500;
-    color: white;
-    transition: color 0.3s ease;
+  text-decoration: none;
+  font-weight: 500;
+  color: white;
+  transition: color 0.3s ease;
   }
   
   .nav-links li a:hover,
@@ -79,7 +79,7 @@ body {
   
   /* Button styles (using your original button classes) */
   .navbar .nav-links .login-btn {
-    padding: 8px 16px;
+    padding: 5px 10px;
     border: 1px solid white;
     border-radius: 5px;
     color: white;

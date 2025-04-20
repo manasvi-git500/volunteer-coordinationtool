@@ -133,7 +133,7 @@ body {
 }
 
 .add-event-btn:hover {
-  background-color: #123456;
+  background-color: #0056b3;
 }
 
 /* Event list table */
@@ -181,7 +181,7 @@ button.action-btn {
 }
 
 button.action-btn:hover {
-  background-color: #35607a;
+  background-color: #0056b3;
 }
 
 /* Modal Styling */
@@ -234,7 +234,7 @@ button.action-btn:hover {
 }
 
 .modal-content button:hover {
-  background-color: #123456;
+  background-color: #0056b3;
 }
 
 .close {

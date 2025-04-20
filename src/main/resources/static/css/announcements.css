@@ -24,7 +24,7 @@ body {
   
   .logo-img {
     height: 32px;
-    margin-right: 10px;
+    margin-right: 0.5rem;
   }
   
   .web-name {
@@ -34,11 +34,10 @@ body {
   }
   
   .navbar-right a {
+    margin: 0 12px;
     color: white;
     text-decoration: none;
-    margin-left: 20px;
-    font-size: 16px;
-    transition: color 0.3s;
+    font-weight: 500;
   }
   
   .navbar-right a:hover,
@@ -116,4 +115,6 @@ body {
     margin-top: 50px;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
   }
+  
+  
   

@@ -4,12 +4,14 @@
     padding: 0;
     box-sizing: border-box;
   }
+
   html, body {
     height: 100%;
     font-family: 'Segoe UI', sans-serif;
     background-color: #f0f2f5;
     color: #1e1e2f;
   }
+
   body {
     display: flex;
     flex-direction: column;
@@ -28,11 +30,12 @@
   .navbar-left {
     display: flex;
     align-items: center;
+    
   }
 
   .logo-img {
     height: 32px;
-    margin-right: 10px;
+    margin-right: 0.5rem;
   }
 
   .web-name {
@@ -43,11 +46,10 @@
 
   
   .navbar-right a {
-    margin-left: 20px;
+    margin: 0 12px;
+    color: white;
     text-decoration: none;
-    font-size: 16px;
-    color: #ccc;
-    transition: color 0.3s;
+    font-weight: 500;
   }
 
   .navbar-right a:hover,
@@ -56,7 +58,7 @@
   }
   
   .logout-btn {
-    margin-left: 10px;
+    margin-left: 50px;
     background-color: #e53935;
     color: white !important;
     border: none;
@@ -66,6 +68,7 @@
     border-radius: 4px;
     transition: background 0.3s;
   }
+
   .logout-btn:hover {
     background-color: #c62828;
   }
