@@ -25,18 +25,8 @@
   <main class="content">
     <section class="page-section">
       <h1>Assignments</h1>
-      <div class="assignment-list">
-        <div class="assignment-card">
-          <h3>Community Survey Report</h3>
-          <p>Prepare and submit a report on the recent community health survey conducted during the Health Camp.</p>
-          <p><strong>Due Date:</strong> April 25, 2025</p>
-        </div>
-        <div class="assignment-card">
-          <h3>Environmental Awareness Poster</h3>
-          <p>Design a poster highlighting the importance of reducing plastic usage.</p>
-          <p><strong>Due Date:</strong> April 28, 2025</p>
-        </div>
-        <!-- More assignments can go here -->
+      <div class="assignment-list" id="assignmentList">
+        <!-- Dynamic assignments will be loaded here via JS -->
       </div>
     </section>
   </main>
@@ -44,5 +34,44 @@
   <footer class="footer">
     <p>&copy; 2025 ServeUp. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Sample array to simulate fetching data from an API
+    const assignments = [
+      {
+        title: "Community Survey Report",
+        description: "Prepare and submit a report on the recent community health survey conducted during the Health Camp.",
+        dueDate: "2025-04-25"
+      },
+      {
+        title: "Environmental Awareness Poster",
+        description: "Design a poster highlighting the importance of reducing plastic usage.",
+        dueDate: "2025-04-28"
+      },
+      // More assignments can be added dynamically from the backend
+    ];
+
+    // Function to display assignments
+    function displayAssignments() {
+      const assignmentList = document.getElementById("assignmentList");
+      assignmentList.innerHTML = '';  // Clear existing assignments
+
+      assignments.forEach(assignment => {
+        const assignmentCard = document.createElement("div");
+        assignmentCard.classList.add("assignment-card");
+        
+        assignmentCard.innerHTML = `
+          <h3>${assignment.title}</h3>
+          <p>${assignment.description}</p>
+          <p><strong>Due Date:</strong> ${assignment.dueDate}</p>
+        `;
+        
+        assignmentList.appendChild(assignmentCard);
+      });
+    }
+
+    // Initial display of assignments
+    displayAssignments();
+  </script>
 </body>
 </html>

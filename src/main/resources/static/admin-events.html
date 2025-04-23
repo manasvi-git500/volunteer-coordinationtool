@@ -14,7 +14,6 @@
       <span>ServeUp</span>
     </div>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
       <li><a href="admin-dashboard.html">Dashboard</a></li>
       <li><a href="admin-volunteers.html">Volunteers</a></li>
       <li><a href="admin-events.html" class="active">Events</a></li>
@@ -33,69 +32,56 @@
     </div>
   </section>
 
-
   <div class="main-content">
 
-  <!-- Add Event Button -->
-  <div class="event-controls">
-    <button class="add-event-btn" onclick="openModal()">+ Add Event</button>
-  </div>
-
-  <!-- Event List Table -->
-  <div class="event-list">
-    <table>
-      <thead>
-        <tr>
-          <th>Event Name</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Venue</th>
-          <th>Category</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Event rows go here -->
-        <tr>
-          <td>Community Health Camp</td>
-          <td>2025-04-20</td>
-          <td>10:00 AM</td>
-          <td>City Hall</td>
-          <td>Health</td>
-          <td>
-            <button class="action-btn">Edit</button>
-            <button class="action-btn">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Modal -->
-  <div id="eventModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2>Add New Event</h2>
-      <input type="text" placeholder="Event Name">
-      <input type="date">
-      <input type="time">
-      <input type="text" placeholder="Venue">
-      <select>
-        <option value="">Select Category</option>
-        <option value="Health">Health</option>
-        <option value="Education">Education</option>
-        <option value="Environment">Environment</option>
-      </select>
-      <button>Add Event</button>
+    <!-- Add Event Button -->
+    <div class="event-controls">
+      <button class="add-event-btn" onclick="openModal()">+ Add Event</button>
     </div>
-  </div>
+
+    <!-- Event List Table -->
+    <div class="event-list">
+      <table>
+        <thead>
+          <tr>
+            <th>Event Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Venue</th>
+            <th>Category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="event-table-body">
+          <!-- Dynamic event rows -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Modal -->
+    <div id="eventModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Add New Event</h2>
+        <input type="text" id="event-name" placeholder="Event Name" required>
+        <input type="date" id="event-date" required>
+        <input type="time" id="event-time" required>
+        <input type="text" id="event-venue" placeholder="Venue" required>
+        <select id="event-category" required>
+          <option value="">Select Category</option>
+          <option value="Health">Health</option>
+          <option value="Education">Education</option>
+          <option value="Environment">Environment</option>
+        </select>
+        <button onclick="addEvent()">Add Event</button>
+      </div>
+    </div>
   </div>
 
   <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2025 ServeUp. All rights reserved.</p>
   </footer>
-  
 
   <!-- Script -->
   <script>
@@ -111,6 +97,77 @@
         modal.style.display = "none";
       }
     }
+
+    // LocalStorage functions
+    function getEvents() {
+      return JSON.parse(localStorage.getItem("serveupEvents")) || [];
+    }
+
+    function saveEvents(events) {
+      localStorage.setItem("serveupEvents", JSON.stringify(events));
+    }
+
+    function loadEvents() {
+      const events = getEvents();
+      const tbody = document.getElementById("event-table-body");
+      tbody.innerHTML = "";
+
+      events.forEach((event, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${event.name}</td>
+          <td>${event.date}</td>
+          <td>${event.time}</td>
+          <td>${event.venue}</td>
+          <td>${event.category}</td>
+          <td>
+            <button class="action-btn" onclick="editEvent(${index})">Edit</button>
+            <button class="action-btn" onclick="deleteEvent(${index})">Delete</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function addEvent() {
+      const name = document.getElementById("event-name").value;
+      const date = document.getElementById("event-date").value;
+      const time = document.getElementById("event-time").value;
+      const venue = document.getElementById("event-venue").value;
+      const category = document.getElementById("event-category").value;
+
+      if (!name || !date || !time || !venue || !category) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const events = getEvents();
+      events.push({ name, date, time, venue, category });
+      saveEvents(events);
+      loadEvents();
+      closeModal();
+
+      // Reset form
+      document.getElementById("event-name").value = '';
+      document.getElementById("event-date").value = '';
+      document.getElementById("event-time").value = '';
+      document.getElementById("event-venue").value = '';
+      document.getElementById("event-category").value = '';
+    }
+
+    function deleteEvent(index) {
+      const events = getEvents();
+      events.splice(index, 1);
+      saveEvents(events);
+      loadEvents();
+    }
+
+    function editEvent(index) {
+      alert("Edit functionality can be implemented later.");
+    }
+
+    // Load events on page load
+    document.addEventListener("DOMContentLoaded", loadEvents);
   </script>
 
 </body>

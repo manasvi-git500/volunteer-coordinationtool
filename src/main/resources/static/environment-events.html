@@ -9,21 +9,20 @@
 <body>
 
   <!-- Navbar -->
- <!-- Navbar -->
- <nav class="navbar">
-  <div class="navbar-left">
-    <img src="images/logo.png" alt="ServeUp Logo" class="logo">
-    <span class="brand-name">ServeUp</span>
-  </div>
-  <div class="navbar-right">
-    <a href="volunteer.html">Dashboard</a>
-    <a href="events.html">Events</a>
-    <a href="health-events.html">Health</a>
-    <a href="education-events.html">Education</a>
-    <a href="environment-events.html" class="active">Environment</a>
-    <button class="logout-btn" onclick="window.location.href='index.html'">Logout</button>
-  </div>
-</nav>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <img src="images/logo.png" alt="ServeUp Logo" class="logo">
+      <span class="brand-name">ServeUp</span>
+    </div>
+    <div class="navbar-right">
+      <a href="volunteer.html">Dashboard</a>
+      <a href="events.html">Events</a>
+      <a href="health-events.html">Health</a>
+      <a href="education-events.html">Education</a>
+      <a href="environment-events.html" class="active">Environment</a>
+      <button class="logout-btn" onclick="window.location.href='index.html'">Logout</button>
+    </div>
+  </nav>
 
   <!-- Hero Banner -->
   <section class="hero-banner environment-hero">
@@ -35,27 +34,9 @@
   <section class="events-section">
     <h2 class="section-title">Upcoming Environment Events</h2>
 
-  <div class="events-scroll-wrapper">
-    <div class="event-card">
-      <h3>City Park Cleanup</h3>
-      <p><strong>Date:</strong> April 28, 2025</p>
-      <p><strong>Time:</strong> 9:00 AM - 12:00 PM</p>
-      <p><strong>Venue:</strong> Greenfield Park</p>
-      <p><strong>Organization:</strong> CleanEarth Alliance</p>
-      <p><strong>Contact:</strong> cleanteam@earth.org</p>
-      <a href="registration.html" class="register-btn">Register</a>
+    <div class="events-scroll-wrapper" id="environment-events-container">
+      <!-- Event cards will be dynamically inserted here -->
     </div>
-
-    <div class="event-card">
-      <h3>Tree Plantation Drive</h3>
-      <p><strong>Date:</strong> May 10, 2025</p>
-      <p><strong>Time:</strong> 8:00 AM - 11:30 AM</p>
-      <p><strong>Venue:</strong> Riverside School Grounds</p>
-      <p><strong>Organization:</strong> GreenFuture Volunteers</p>
-      <p><strong>Contact:</strong> green@plant.org</p>
-      <a href="registration.html" class="register-btn">Register</a>
-    </div>
-  </div>  
   </section>
 
   <!-- Testimonials -->
@@ -64,12 +45,40 @@
     <p class="testimonial">"Planting trees and cleaning parks gave me a sense of purpose."</p>
   </section>
 
-  
-
   <footer class="footer">
     <p>&copy; 2025 ServeUp. All rights reserved.</p>
   </footer>
-  
+
+  <script>
+    function loadEnvironmentEvents() {
+      const events = JSON.parse(localStorage.getItem("serveupEvents")) || [];
+      const container = document.getElementById("environment-events-container");
+      container.innerHTML = "";
+
+      const environmentEvents = events.filter(event => event.category === "Environment");
+
+      if (environmentEvents.length === 0) {
+        container.innerHTML = "<p>No upcoming environment events at the moment.</p>";
+        return;
+      }
+
+      environmentEvents.forEach(event => {
+        const card = document.createElement("div");
+        card.className = "event-card";
+        card.innerHTML = `
+          <h3>${event.name}</h3>
+          <p><strong>Date:</strong> ${event.date}</p>
+          <p><strong>Time:</strong> ${event.time}</p>
+          <p><strong>Venue:</strong> ${event.venue}</p>
+          <p><strong>Contact:</strong> contact@serveup.org</p>
+          <a href="registration.html" class="register-btn">Register</a>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", loadEnvironmentEvents);
+  </script>
 
 </body>
 </html>

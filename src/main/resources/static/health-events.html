@@ -33,28 +33,9 @@
   <!-- Events Section -->
   <section class="events-section">
     <h2 class="section-title">Upcoming Health Initiatives</h2>
-    
-  <div class="events-scroll-wrapper">
-    <div class="event-card">
-      <h3>Community Health Camp</h3>
-      <p><strong>Date:</strong> April 20, 2025</p>
-      <p><strong>Time:</strong> 10:00 AM - 4:00 PM</p>
-      <p><strong>Venue:</strong> City Clinic Grounds</p>
-      <p><strong>Organization:</strong> Health for All Foundation</p>
-      <p><strong>Contact:</strong> healthforall@example.com</p>
-      <a href="registration.html" class="register-btn">Register</a>
+    <div class="events-scroll-wrapper" id="health-events-container">
+      <!-- Event cards will be dynamically inserted here -->
     </div>
-
-    <div class="event-card">
-      <h3>Blood Donation Drive</h3>
-      <p><strong>Date:</strong> May 5, 2025</p>
-      <p><strong>Time:</strong> 9:00 AM - 2:00 PM</p>
-      <p><strong>Venue:</strong> Red Cross Hall</p>
-      <p><strong>Organization:</strong> Red Cross</p>
-      <p><strong>Contact:</strong> contact@redcross.org</p>
-      <a href="registration.html" class="register-btn">Register</a>
-    </div>
-  </div>
   </section>
 
   <!-- Testimonials -->
@@ -66,12 +47,40 @@
     </div>
   </section>
 
-  
   <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2025 ServeUp. All rights reserved.</p>
   </footer>
-  
 
+  <script>
+    function loadHealthEvents() {
+      const events = JSON.parse(localStorage.getItem("serveupEvents")) || [];
+      const container = document.getElementById("health-events-container");
+      container.innerHTML = "";
+
+      const healthEvents = events.filter(event => event.category === "Health");
+
+      if (healthEvents.length === 0) {
+        container.innerHTML = "<p>No upcoming health events at the moment.</p>";
+        return;
+      }
+
+      healthEvents.forEach(event => {
+        const card = document.createElement("div");
+        card.className = "event-card";
+        card.innerHTML = `
+          <h3>${event.name}</h3>
+          <p><strong>Date:</strong> ${event.date}</p>
+          <p><strong>Time:</strong> ${event.time}</p>
+          <p><strong>Venue:</strong> ${event.venue}</p>
+          <p><strong>Contact:</strong> contact@serveup.org</p>
+          <a href="registration.html" class="register-btn">Register</a>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", loadHealthEvents);
+  </script>
 </body>
 </html>

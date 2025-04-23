@@ -16,7 +16,6 @@
         ServeUp
       </div>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
         <li><a href="admin-dashboard.html">Dashboard</a></li>
         <li><a href="admin-volunteers.html">Volunteers</a></li>
         <li><a href="admin-events.html">Events</a></li>
@@ -47,8 +46,38 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- Assignment rows will be dynamically added here -->
+        <tbody id="assignmentsTable">
+          <!-- Pre-existing assignments -->
+          <tr>
+            <td>Assignment 1</td>
+            <td>Description for Assignment 1</td>
+            <td>2025-04-30</td>
+            <td>Pending</td>
+            <td>
+              <button class="edit-btn" onclick="editAssignment(this)">Edit</button>
+              <button class="delete-btn" onclick="deleteAssignment(this)">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Assignment 2</td>
+            <td>Description for Assignment 2</td>
+            <td>2025-05-05</td>
+            <td>Completed</td>
+            <td>
+              <button class="edit-btn" onclick="editAssignment(this)">Edit</button>
+              <button class="delete-btn" onclick="deleteAssignment(this)">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Assignment 3</td>
+            <td>Description for Assignment 3</td>
+            <td>2025-06-10</td>
+            <td>Pending</td>
+            <td>
+              <button class="edit-btn" onclick="editAssignment(this)">Edit</button>
+              <button class="delete-btn" onclick="deleteAssignment(this)">Delete</button>
+            </td>
+          </tr>
         </tbody>
       </table>
 
@@ -95,13 +124,76 @@
       }
     };
 
-    // Placeholder for form handling
+    // Add assignment functionality
     document.getElementById('assignmentForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      // Logic to add assignment can go here
-      alert('Assignment saved!');
+
+      // Get values from the form
+      const title = document.getElementById('title').value;
+      const description = document.getElementById('description').value;
+      const dueDate = document.getElementById('dueDate').value;
+
+      // Create a new row
+      const newRow = document.createElement('tr');
+      newRow.innerHTML = `
+        <td>${title}</td>
+        <td>${description}</td>
+        <td>${dueDate}</td>
+        <td>Pending</td>
+        <td>
+          <button class="edit-btn" onclick="editAssignment(this)">Edit</button>
+          <button class="delete-btn" onclick="deleteAssignment(this)">Delete</button>
+        </td>
+      `;
+
+      // Add the new row to the table
+      document.getElementById('assignmentsTable').appendChild(newRow);
+
+      // Clear the form and close the modal
+      document.getElementById('assignmentForm').reset();
       closeModal();
     });
+
+    // Delete assignment
+    function deleteAssignment(button) {
+      const row = button.closest('tr');
+      row.remove();
+    }
+
+    // Edit assignment
+    function editAssignment(button) {
+      const row = button.closest('tr');
+      const cells = row.getElementsByTagName('td');
+      const title = cells[0].innerText;
+      const description = cells[1].innerText;
+      const dueDate = cells[2].innerText;
+
+      // Pre-fill the modal with the existing data
+      document.getElementById('title').value = title;
+      document.getElementById('description').value = description;
+      document.getElementById('dueDate').value = dueDate;
+
+      // Change the button text to "Update"
+      const saveButton = document.querySelector('#assignmentForm button');
+      saveButton.innerText = 'Update Assignment';
+      
+      // Add a special handler for updating the assignment
+      saveButton.onclick = function(e) {
+        e.preventDefault();
+
+        // Update the assignment row with the new values
+        cells[0].innerText = document.getElementById('title').value;
+        cells[1].innerText = document.getElementById('description').value;
+        cells[2].innerText = document.getElementById('dueDate').value;
+
+        // Reset and close the modal
+        document.getElementById('assignmentForm').reset();
+        closeModal();
+      };
+
+      // Open the modal for editing
+      openModal();
+    }
   </script>
 
 </body>
